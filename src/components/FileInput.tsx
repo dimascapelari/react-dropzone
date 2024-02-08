@@ -1,6 +1,23 @@
-import { Flex, Input, Text } from "@chakra-ui/react";
+import { useCallback, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { Flex, Text } from "@chakra-ui/react";
 
 export const FileInput = () => {
+  const [file, setFile] = useState<File | null>(null);
+
+  const onDrop = useCallback((files: File[]) => {
+    setFile(files[0]);
+  }, []);
+
+  if (file) return null;
+
+  const dropzone = useDropzone({
+    onDrop,
+    accept: {
+      "application/pdf": [".pdf"],
+    },
+  });
+
   return (
     <Flex
       bg="#fff"
@@ -8,6 +25,7 @@ export const FileInput = () => {
       h="326px"
       borderRadius="16px"
       flexDirection="column"
+      {...dropzone.getRootProps()}
     >
       <Flex justifyContent="space-between" w="100%" p="40px">
         <Text fontSize="24px" fontWeight="700">
@@ -47,7 +65,8 @@ export const FileInput = () => {
             </Text>
           </Flex>
         </label>
-        <Input hidden />
+
+        <input hidden {...dropzone.getInputProps()} />
       </Flex>
     </Flex>
   );
