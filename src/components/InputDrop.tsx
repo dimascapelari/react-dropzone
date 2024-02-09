@@ -1,12 +1,13 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { DropzoneState } from "react-dropzone";
 
 export interface InputProps {
   dropzone: DropzoneState;
+  file: File | null;
 }
 
-export const InputDrop = ({ dropzone }: InputProps) => {
+export const InputDrop = ({ dropzone, file }: InputProps) => {
   const { getRootProps, getInputProps, isDragActive } = dropzone;
 
   return (
@@ -70,6 +71,29 @@ export const InputDrop = ({ dropzone }: InputProps) => {
         </label>
 
         <input hidden {...getInputProps()} />
+      </Flex>
+      <Flex justifyContent="space-between" w="716px" margin="0 auto" mt="20px">
+        <Button
+          isDisabled={file ? false : true}
+          w="346px"
+          h="40px"
+          bg="#fff"
+          borderRadius="16px"
+          border="1px solid #17191C"
+          color="#17191C"
+        >
+          Voltar
+        </Button>
+        <Button
+          isDisabled={file ? false : true}
+          type="submit"
+          w="346px"
+          h="40px"
+          bg={file ? "#78CEDC" : "#D8F2F5"}
+          borderRadius="16px"
+        >
+          Enviar
+        </Button>
       </Flex>
     </Flex>
   );

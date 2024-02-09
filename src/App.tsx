@@ -2,7 +2,9 @@ import { Flex } from "@chakra-ui/react";
 import { FileInput } from "./components/FileInput";
 
 function App() {
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    alert("Foi");
+  };
 
   return (
     <Flex
