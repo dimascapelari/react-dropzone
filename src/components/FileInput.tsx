@@ -17,9 +17,14 @@ export const FileInput = () => {
   const dropzone = useDropzone({
     onDrop,
     accept: {
-      "application/pdf": [".pdf"],
+      // "application/pdf": [".pdf"],
+      "application/xlsx": [".xlsx"],
+      "application/xls": [".xls"],
+      "application/csv": [".csv"],
     },
   });
+
+  console.log("file", file);
 
   if (file) return <HasFile file={file} removeFile={removeFile} />;
 
