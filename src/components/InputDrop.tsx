@@ -1,6 +1,6 @@
+import { DropzoneState } from "react-dropzone";
 import { Button, Flex, Text } from "@chakra-ui/react";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import { DropzoneState } from "react-dropzone";
 
 export interface InputProps {
   dropzone: DropzoneState;
@@ -72,6 +72,51 @@ export const InputDrop = ({ dropzone, file }: InputProps) => {
 
         <input hidden {...getInputProps()} />
       </Flex>
+
+      {/* {data.length > 0 && (
+        <Flex flexDirection="column" alignItems="center" mt="20px">
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(data[0]).map((key) => (
+                  <th key={key}>{key}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  {Object.values(item).map((value, idx) => (
+                    <td key={idx}>{value}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Flex>
+      )} */}
+
+      {/* {data.length > 0 && (
+        <Flex flexDirection="column" alignItems="center" mt="20px">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.name}</td>
+                  <td>{item.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Flex>
+      )} */}
+
       <Flex justifyContent="space-between" w="716px" margin="0 auto" mt="20px">
         <Button
           isDisabled={file ? false : true}
